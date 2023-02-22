@@ -10,3 +10,5 @@ class afterSearch:
     def clickOnFirstResult(self):
         self.driver.find_elements(*self.results)[0].click()
 
+    def getTitleBack(self):
+        return self.driver.title

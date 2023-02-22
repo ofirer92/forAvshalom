@@ -13,10 +13,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 def setup(request):
     global driver
     config = ConfigParser()
-    config.read('config.ini')
+    config.read(r'config.ini')
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    driver.get('https://www.google.com')
+    driver.get(config['params']['url'])
     request.cls.driver = driver
+    request.cls.expectedTitle = config['params']['expectedTitle']
     yield
     driver.close()
 
